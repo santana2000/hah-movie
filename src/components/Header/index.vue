@@ -1,6 +1,6 @@
 <template>
-    <header>
-        <h2>{{title}}</h2>
+    <header id="header">
+        <h3>{{title}}</h3>
     </header> 
 </template>
 
@@ -13,16 +13,26 @@ export default {
         default:'Hah '
       }
   }
-
- 
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-   
-  *{
-    padding: 0;
-    background-color:green;
+  #header{
+    text-align: center;
+    color: white;
+    background-color:rgb(68, 146, 192);
+    position: relative;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
   }
+  h3{
+    font-weight: 300;
+  }
+  /* #icon{
+    position: absolute;
+  } */
 </style>

@@ -1,8 +1,8 @@
 <template> 
-    <div>
-        <Header title="去影院" />
-        <div>cinema</div>
-        <TabBar />
+    <div class="container">
+        <Header title="看电影"/>
+        <div>movie</div>
+        <TabBar/>
     </div>
 </template>
 
@@ -19,7 +19,11 @@
     }
 </script>
 
-<style>
-    
+<style scoped>
+   .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 </style>
 
