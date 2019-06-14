@@ -1,19 +1,21 @@
 <template>
     <div class="container">
         <Header title="身份证"/>
-        <div>mine</div>
-        <TabBar/>
+        <Login />
+        <TabBar />
     </div>
 </template>
 
 <script>
     import Header from '@/components/Header';
     import TabBar from '@/components/TabBar';
+    import Login from '@/components/Login';
     export default {
         name: 'Mine',
         components:{
             Header,
-            TabBar
+            TabBar,
+            Login
         }    
     }
 </script>

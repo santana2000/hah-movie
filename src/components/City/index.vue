@@ -1,12 +1,18 @@
 <template>
-    <header id="header">
-        <h3>{{title}}</h3>
-    </header> 
+  <div>
+    <div>
+      北京
+    </div>
+    <div>
+      上海
+    </div>
+  </div>
+
 </template>
 
 <script>
 export default {
-  name: 'Header',
+  name: 'City',
   props:{
       title:{
         type: String,
@@ -21,9 +27,7 @@ export default {
   #header{
     text-align: center;
     color: white;
-    /* background-color:rgb(68, 146, 192); */
-    background-color:rgb(64, 158, 255);
-
+    background-color:rgb(68, 146, 192);
     position: relative;
     height: 60px;
     display: flex;
