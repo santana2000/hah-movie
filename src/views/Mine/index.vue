@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <Header title="wode" />
+    <div class="container">
+        <Header title="身份证"/>
         <div>mine</div>
-        <TabBar />
+        <TabBar/>
     </div>
 </template>
 
@@ -17,7 +17,11 @@
         }    
     }
 </script>
-<style>
-    
+<style scoped>
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 </style>
 
