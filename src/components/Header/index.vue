@@ -21,7 +21,9 @@ export default {
   #header{
     text-align: center;
     color: white;
-    background-color:rgb(68, 146, 192);
+    /* background-color:rgb(68, 146, 192); */
+    background-color:rgb(64, 158, 255);
+
     position: relative;
     height: 60px;
     display: flex;
@@ -30,7 +32,7 @@ export default {
     
   }
   h3{
-    font-weight: 300;
+    font-weight: 400;
   }
   /* #icon{
     position: absolute;

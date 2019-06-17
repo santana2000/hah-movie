@@ -30,7 +30,8 @@ export default {
   footer{
     height: 60px;
     color: white;
-    background-color:rgb(68, 146, 192);
+    background-color:rgb(64, 158, 255);
+    /* background-color:rgb(68, 146, 192); */
     font-weight: 100;
     border-top: 2px solid rgba(212, 218, 219, 0.884) 
   }
@@ -44,6 +45,9 @@ export default {
   .item{
     line-height: 60px;
     text-align: center;
+  }
+  li.router-link-active{
+    background-color: #81B9F4
   }
   ul{
     list-style: none;
