@@ -3,8 +3,9 @@
         <Header title="看电影"/>
         <div class="content">
             <div class="menu">
-                <router-link to="/movie/city" tag="div" class="city">
+                <router-link to="/movie/city"  tag="div" class="city">
                     徐州
+                   
                 </router-link>
                 <router-link to="/movie/now" tag="div" class="nowplay">
                     正在热映
@@ -37,6 +38,7 @@
             Header,
             TabBar
         }
+       
     }
 </script>
 

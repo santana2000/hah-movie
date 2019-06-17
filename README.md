@@ -4,8 +4,13 @@
 3. keep-alive可以包裹路由插座
 4. i标签做图标???
 5. 路由重定向,二级路由
-6. router-link to="/cinema",to跳转至路由地址（不关心具体页面，让地址去匹配页面）
+6. router-link to="/cinema",to跳转至路由地址（不关心具体页面，让地址通过路由表去匹配页面）
 7. 课时8 合并分支
+8. 反向代理的配置vue.config.js
+9. axios引入与使用
+10. v-if嵌套使用
+11. ref获取dom元素
+12. offsetTop与scrollTop
 ## Project setup
 ```
 npm install
