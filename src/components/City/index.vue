@@ -113,6 +113,8 @@ export default {
         console.log(h4 );
         console.log(h4[index].parentNode.offsetTop);
         
+
+        
         //******* scrollTop获取的值是滚动条产生的那个节点  *********************
         this.$refs.city_li.parentNode.parentNode.scrollTop = h4[index].parentNode.offsetTop;
         console.log(this.$refs.city_li.parentNode.parentNode.scrollTop);

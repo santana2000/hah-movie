@@ -4,12 +4,20 @@ import router from './routers'
 import store from './stores'
 
 import axios from 'axios'
+ 
 
 Vue.prototype.axios = axios;
 //可以用this.axios了，this代表这个vue组件
 
+Vue.filter('getSrc',(url, arg) => {
+    return url.replace(/w\.h/, arg)
+});
+Vue.filter('shortStar',(star, arg) => {
+  return star.substring(0,6) + arg
+});
 
-Vue.config.productionTip = false
+
+Vue.config.productionTip = false;
 
 new Vue({
   router,
