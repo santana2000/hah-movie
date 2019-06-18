@@ -6,6 +6,7 @@
 5. 路由重定向,二级路由
 6. router-link to="/cinema",to跳转至路由地址（不关心具体页面，让地址通过路由表去匹配页面）
 7. 课时8 合并分支
+-----------------------------------
 8. 反向代理的配置vue.config.js
 9. axios引入与使用
 10. v-if嵌套使用
@@ -15,6 +16,11 @@
 14. 电影海报获取后src要用bind,图片缩放问题？？？？？？？？？？？？？？？？？？？？
 15. 注意vscode有没有给你乱引入什么奇奇怪怪的包
 16. span的灵活使用
+----------------------------------
+17. <i> + <input>外面再包裹一层border,input本身的边框隐藏,dispaly:inline-block设置margin auto无效
+
+18. watch监听v-model所绑定数据的变化
+19. 函数防抖，clearTimeout setTimeout
 ## Project setup
 ```
 npm install
