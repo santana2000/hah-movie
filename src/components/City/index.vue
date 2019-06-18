@@ -1,18 +1,18 @@
 <template>
-  <div>
+  
     <!-- <button @click="clickRoute">查看当前路由</button> -->
     <div class="city">
 
       <div class="hot_list">
-        <h4 class="hot">热门城市</h4>
+        <h4  >热门城市</h4>
         <ul class="hotname">
           <li class="item1" v-for="item in hotList" :key='item.id'> {{item.nm}} </li>
         </ul>
       </div>
 
-      <div class="city_list">
+      <div class="city_list" ref="city_li">
         <div class="city_area" v-for="item in cityList" :key="item.index">
-          <h4 class="hot">{{item.index}}</h4>
+          <h4  >{{item.index}}</h4>
           <ul class="cityname">
             <li class="item2" v-for="itemx in item.list" :key='itemx.id'> {{itemx.nm}} </li>
           </ul>
@@ -20,14 +20,14 @@
       </div>
 
       <div class="city_index">
-        <div v-for="item in cityList" :key="item.index" @touchstart='indexToName(index)'>
+        <div v-for="(item,index) in cityList" :key="item.index" @touchstart='indexToName(index)'>
           {{item.index}}
         </div>
       </div>
     
 
     </div>
-  </div>
+  
 
 </template>
 
@@ -109,7 +109,15 @@ export default {
         return { cityList, hotList}
       },
       indexToName:function(index){
+        var h4 = this.$refs.city_li.getElementsByTagName('h4');
+        console.log(h4 );
+        console.log(h4[index].parentNode.offsetTop);
         
+
+        
+        //******* scrollTop获取的值是滚动条产生的那个节点  *********************
+        this.$refs.city_li.parentNode.parentNode.scrollTop = h4[index].parentNode.offsetTop;
+        console.log(this.$refs.city_li.parentNode.parentNode.scrollTop);
       },
       clickRoute: function(){
           console.log(this.$route.path)
