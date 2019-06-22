@@ -4,7 +4,7 @@
         <div class="content">
             <div class="menu">
                 <router-link to="/movie/city"  tag="div" class="city">
-                    徐州
+                    {{ $store.state.city.nm}}
                    
                 </router-link>
                 <router-link to="/movie/now" tag="div" class="nowplay">

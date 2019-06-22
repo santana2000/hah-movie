@@ -6,7 +6,10 @@
       <div class="hot_list">
         <h4  >热门城市</h4>
         <ul class="hotname">
-          <li class="item1" v-for="item in hotList" :key='item.id'> {{item.nm}} </li>
+          <li class="item1" 
+              v-for="item in hotList" 
+              :key='item.id'
+              @click='changeCity(item.nm,item.id)'> {{item.nm}} </li>
         </ul>
       </div>
 
@@ -14,7 +17,10 @@
         <div class="city_area" v-for="item in cityList" :key="item.index">
           <h4  >{{item.index}}</h4>
           <ul class="cityname">
-            <li class="item2" v-for="itemx in item.list" :key='itemx.id'> {{itemx.nm}} </li>
+            <li class="item2" 
+                v-for="itemx in item.list" 
+                :key='itemx.id'
+                @click='changeCity(itemx.nm,itemx.id)'> {{itemx.nm}} </li>
           </ul>
         </div>
       </div>
@@ -43,85 +49,101 @@ export default {
     }
   },
   mounted(){
-    this.axios.get('/api/cityList').then(
-      (res) => {
-        var cities = res.data.data.cities;
-        console.log(cities );
+    var hotList = JSON.parse(window.localStorage.getItem('hotList')) ;
+    var cityList = JSON.parse(window.localStorage.getItem('cityList'));
 
-        //数据分组的形式： [ 
-        //                 {index: A , list: [{nm: Atlanta, id:111}, {nm: Alisa, id:115}] }, 
-        //                 {index: B , list: [{nm: Boston,  id:121}] }
-        //               ]
-        var {cityList,hotList} = this.formatCity(cities);
-        this.cityList = cityList;
-        this.hotList = hotList;
-      })
+    if(hotList && cityList){
+      this.cityList = cityList;
+      this.hotList = hotList;
+    }else{
+      this.axios.get('/api/cityList').then(
+        (res) => {
+          var cities = res.data.data.cities;
+
+          //数据分组的形式： [ ******************** 注意list也是一个数组形式 ******************
+          //                 {index: A , list: [{nm: Atlanta, id:111}, {nm: Alisa, id:115}] }, 
+          //                 {index: B , list: [{nm: Boston,  id:121}] }
+          //               ]
+
+          var {cityList,hotList} = this.formatCity(cities);
+          this.cityList = cityList;
+          this.hotList = hotList;
+          window.localStorage.setItem('hotList',JSON.stringify(hotList) )
+          window.localStorage.setItem('cityList',JSON.stringify(cityList) )
+        })
+    } 
   },
   methods: {
-      formatCity:function(cities){
-        var cityList = [];
-        var hotList = [];
+    formatCity:function(cities){
+      var cityList = [];
+      var hotList = [];
 
-        for(var i=0; i<cities.length; i++){
-          if(cities[i].isHot === 1){
-            hotList.push(cities[i]);
-          }
+      for(var i=0; i<cities.length; i++){
+        if(cities[i].isHot === 1){
+          hotList.push(cities[i]);
         }
+      }
 
-        for(var i=0; i<cities.length;i++){
-          var firstLetter = cities[i].py.substring(0,1).toUpperCase();
+      for(var i=0; i<cities.length;i++){
+        var firstLetter = cities[i].py.substring(0,1).toUpperCase();
 
-          if(compare(firstLetter)){ //首字母在列表内没出现
-            cityList.push({ index: firstLetter, list: [{ nm: cities[i].nm, id: cities[i].id }] });
-          }
-          else{
-            for(var j=0;j<cityList.length;j++){
-              if(cityList[j].index === firstLetter){
-                 cityList[j].list.push({ nm: cities[i].nm, id: cities[i].id })
-              }
+        if(compare(firstLetter)){ //首字母在列表内没出现
+          cityList.push({ index: firstLetter, list: [{ nm: cities[i].nm, id: cities[i].id }] });
+        }
+        else{
+          for(var j=0;j<cityList.length;j++){
+            if(cityList[j].index === firstLetter){
+                cityList[j].list.push({ nm: cities[i].nm, id: cities[i].id })
             }
           }
         }
-  
-        function compare(firstLetter){
-          for(var i=0;i<cityList.length;i++){
-            if(cityList[i].index === firstLetter){
-              return false;
-            }
-          }
-          //注意：比较一轮 ，返回一次
-          return true;  //首字母在列表内没出现
+      }
 
+      function compare(firstLetter){
+        for(var i=0;i<cityList.length;i++){
+          if(cityList[i].index === firstLetter){
+            return false;
+          }
         }
+        //注意：比较一轮 ，返回一次
+        return true;  //首字母在列表内没出现
 
-        cityList.sort( function (n1,n2) {
-          if(n1.index > n2.index){
-            return 1
-          }
-          else if(n1.index < n2.index){
-            return -1
-          }
-          else{
-            return 0
-          }
-        });
+      }
 
-        return { cityList, hotList}
-      },
-      indexToName:function(index){
-        var h4 = this.$refs.city_li.getElementsByTagName('h4');
-        console.log(h4 );
-        console.log(h4[index].parentNode.offsetTop);
-        
+      cityList.sort( function (n1,n2) {
+        if(n1.index > n2.index){
+          return 1
+        }
+        else if(n1.index < n2.index){
+          return -1
+        }
+        else{
+          return 0
+        }
+      });
 
-        
-        //******* scrollTop获取的值是滚动条产生的那个节点  *********************
-        this.$refs.city_li.parentNode.parentNode.scrollTop = h4[index].parentNode.offsetTop;
-        console.log(this.$refs.city_li.parentNode.parentNode.scrollTop);
-      },
-      clickRoute: function(){
-          console.log(this.$route.path)
-      },
+      return { cityList, hotList}
+    },
+    indexToName:function(index){
+      var h4 = this.$refs.city_li.getElementsByTagName('h4');
+      console.log(h4 );
+      console.log(h4[index].parentNode.offsetTop);
+      
+      //******* scrollTop获取的值是滚动条产生的那个节点  *********************
+      this.$refs.city_li.parentNode.parentNode.scrollTop = h4[index].parentNode.offsetTop;
+      console.log(this.$refs.city_li.parentNode.parentNode.scrollTop);
+    },
+    changeCity:function(nm,id){
+      this.$store.commit('CHANGE_CITY',{nm:nm,id:id});   //这里路径怎么写？？？
+      this.$router.push('/movie/now');
+
+      window.localStorage.setItem('citynm',nm);
+      window.localStorage.setItem('cityid',id);
+    },
+    //测试route用
+    clickRoute: function(){
+        console.log(this.$route.path)
+    },
 
   }
 }
