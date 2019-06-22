@@ -50,13 +50,10 @@ export default {
         //先决判断还是很重要，如果没有返回的数据list，就会报错找不到list
         if(mymsg && movies){
                 this.searchList = res.data.data.movies.list;
-
         }
-                // console.log(a)
+        // console.log(a)
       })}
-  },
-
-     
+  },    
   
 }
 </script>
@@ -72,6 +69,9 @@ export default {
      width: 80%;
      height: 30px;;
      margin: 10px  auto;
+ }
+ ul{
+     padding: 5px;
  }
  li{
      border-bottom: 2px solid silver;

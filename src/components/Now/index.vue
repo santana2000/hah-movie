@@ -45,58 +45,61 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
- li{
-     border-bottom: 2px solid silver;
-     display: flex;
-     justify-content: space-between;
-     font-size: 16px;
-     padding: 10px;
+ul{
+    padding: 5px;
+}
+li{
+    border-bottom: 2px solid silver;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    padding: 10px;
 
- }
- .post{
-     /* padding: 10px; */
-     height: 120px;
-     margin-right: 10px;
- }
- .main{
-     flex: 1;
-     position: relative;
- }
- .name{
-     font-size: 18px;
-     font-weight: 600;
-     font-family: '微软雅黑';
-     margin: 0 0 15px 0;
+}
+.post{
+    /* padding: 10px; */
+    height: 120px;
+    margin-right: 10px;
+}
+.main{
+    flex: 1;
+    position: relative;
+}
+.name{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: '微软雅黑';
+    margin: 0 0 15px 0;
 
- }
- .score, .stars, .num{
-     font-size: 15px;
-     margin-bottom: 5px;
- }
- span{
-     color: chocolate;
-     font-weight: 600;
+}
+.score, .stars, .num{
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+span{
+    color: chocolate;
+    font-weight: 600;
 
- }
- .imax{
-     position: absolute;
-     right: -20px;
-     top:5px;
-     width: 60px;
- }
- button{
-     color: white;
-     background-color: rgba(98, 167, 212, 0.89);
-     align-self: center;
-     width: 60px;
-     height: 35px;
-     padding: 0 5px;
-     border-radius: 5px;
-     border: none;
-     font-size: 16px;
+}
+.imax{
+    position: absolute;
+    right: -20px;
+    top:5px;
+    width: 60px;
+}
+button{
+    color: white;
+    background-color: rgba(98, 167, 212, 0.89);
+    align-self: center;
+    width: 60px;
+    height: 35px;
+    padding: 0 5px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
 
- }
- .pre{
-     background-color: rgba(165, 42, 42, 0.795);
- }
+}
+.pre{
+    background-color: rgba(165, 42, 42, 0.795);
+}
 </style>
