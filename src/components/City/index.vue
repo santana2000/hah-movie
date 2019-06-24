@@ -3,25 +3,27 @@
     <!-- <button @click="clickRoute">查看当前路由</button> -->
     <div class="city">
 
-      <div class="hot_list">
-        <h4  >热门城市</h4>
-        <ul class="hotname">
-          <li class="item1" 
-              v-for="item in hotList" 
-              :key='item.id'
-              @click='changeCity(item.nm,item.id)'> {{item.nm}} </li>
-        </ul>
-      </div>
-
-      <div class="city_list" ref="city_li">
-        <div class="city_area" v-for="item in cityList" :key="item.index">
-          <h4  >{{item.index}}</h4>
-          <ul class="cityname">
-            <li class="item2" 
-                v-for="itemx in item.list" 
-                :key='itemx.id'
-                @click='changeCity(itemx.nm,itemx.id)'> {{itemx.nm}} </li>
+      <div class="all_city" ref="all_city">
+        <div class="hot_list">
+          <h4  >热门城市</h4>
+          <ul class="hotname">
+            <li class="item1" 
+                v-for="item in hotList" 
+                :key='item.id'
+                @click='changeCity(item.nm,item.id)'> {{item.nm}} </li>
           </ul>
+        </div>
+
+        <div class="city_list" ref="city_li">
+          <div class="city_area" v-for="item in cityList" :key="item.index">
+            <h4  >{{item.index}}</h4>
+            <ul class="cityname">
+              <li class="item2" 
+                  v-for="itemx in item.list" 
+                  :key='itemx.id'
+                  @click='changeCity(itemx.nm,itemx.id)'> {{itemx.nm}} </li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -30,7 +32,7 @@
           {{item.index}}
         </div>
       </div>
-    
+      
 
     </div>
   
@@ -38,7 +40,7 @@
 </template>
 
 <script>
-// import func from '../../../vue-temp/vue-editor-bridge';
+ 
  
 export default {
   name: 'City',

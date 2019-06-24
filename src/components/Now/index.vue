@@ -1,6 +1,6 @@
 <template>
-    <div class="movelist">
-        <ul>
+    <div class="movelist" ref="all_movie">
+        <ul >
             <li v-for="item in movieList" :key="item.id" >
                 <img class="post" :src="item.img | getSrc('128.180')" alt="sss">
 
@@ -24,6 +24,9 @@
 </template>
 
 <script>
+
+import BScroll from 'better-scroll';
+
 export default {
   name: 'Now',
   data(){
@@ -31,10 +34,19 @@ export default {
           movieList:[],
       }
   },
-  mounted(){
-      this.axios.get('/api/movieOnInfoList?cityId=10').then((res) => {
+//   mounted(){
+  activated(){
+      console.log(111)
+      var cityId = this.$store.state.city.id;
+      this.axios.get('/api/movieOnInfoList?cityId=' + cityId).then((res) => {
           this.movieList = res.data.data.movieList;
-          console.log(this.moveList)
+          this.$nextTick(() => {
+              var getdom = this.$refs.all_movie;
+              new BScroll(getdom,{
+                   
+                  })
+          });
+         
       })
   }
 
@@ -45,6 +57,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.movelist{
+    height: 100%;
+}
 ul{
     padding: 5px;
 }
