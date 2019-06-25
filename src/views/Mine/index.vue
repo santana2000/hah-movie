@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div id="container">
         <Header title="身份证"/>
         <Login />
         <TabBar />
@@ -20,10 +20,6 @@
     }
 </script>
 <style scoped>
-    .container{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+   
 </style>
 

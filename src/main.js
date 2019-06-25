@@ -4,6 +4,8 @@ import router from './routers'
 import store from './stores'
 
 import axios from 'axios'
+
+import './assets/iconfont/iconfont.css'
  
 
 Vue.prototype.axios = axios;
