@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
-        <Header title="去影院"/>
-        <div class="content">
+    <div id="container">
+        <Header title="查影院"/>
+        <div id="content">
             <div class="menu">
                 <div  tag="div" class="city">
                     全城

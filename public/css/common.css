@@ -4,14 +4,15 @@ img{ display: block;}
 html,body{ height:100%;}
 /* .clearfix:after{ content:""; display: block; clear:both;} */
 
-.container{ 
-    height: 100%; display: flex; 
-    flex-direction:column;
-    justify-content: space-between
+#container{ 
+    height: 100%; 
+    display: flex; 
+    flex-direction:column;  
+     
 }
-.content{ 
-    flex:1; overflow:auto; 
-    /* margin-bottom: 50px;  */
+#content{ 
+    flex:1; 
+    overflow:auto; 
     position: relative; 
     display: flex; 
     flex-direction:column;

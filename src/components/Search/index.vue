@@ -1,8 +1,12 @@
 <template>
     <div class="searchList">
-        <div class="search_input">
-            <!-- <i></i> -->
-            <input type="text" v-model="mes">
+        <div class="search_wrapper">
+            <div class="search_input">
+                <i class="iconfont iconsearch"></i>
+                <input type="text" v-model="mes">
+            </div>
+         
+            <div class="cancel"> 取消</div>
             
         </div>
         <div class="search_result">
@@ -60,15 +64,51 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/* .searchList, .search_input{
-    width: 100%;
-} */
+.search_wrapper{
+    display: flex;
+    border-bottom: 1px rgba(192, 192, 192, 0.89) solid;
+    background-color: rgba(245,245,245)
+    
+}
  
+ .search_input{
+     border: 1px rgba(192, 192, 192, 0.897) solid;
+     border-radius: 0.3rem;
+     vertical-align: center;
+     background-color: white;
+     display: flex;
+     margin : 0.3rem 0.5rem 0.3rem 1rem;
+     justify-content: center;
+     width: 14rem;
+     /* flex:1; */
+
+     
+
+
+
+ }
+ input :focus{
+     border: none;
+     outline: none;
+ }
+ .cancel{
+     width: 3rem;
+     align-self: center;
+     font-size: 0.85rem;
+     color: rgb(229,72,71);
+     
+ }
+ .iconsearch{
+     align-self: center;
+     font-size: 1.2rem;
+     color: rgb(117, 117, 117)
+ }
  input{
      display: block;
      width: 80%;
      height: 30px;;
-     margin: 10px  auto;
+     margin: 0 0;
+     border: none
  }
  ul{
      padding: 5px;

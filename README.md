@@ -36,6 +36,8 @@
 28. better-scroll插件
 
 1. iconfont的引入
+2. z-index设置-1
+3. 字体图标在项目中新添加后在线更新
 ## Project setup
 ```
 npm install

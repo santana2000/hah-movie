@@ -1,9 +1,46 @@
 <template>
-    <div class="movelist">
+    <div class="movelist" ref="come">
         <ul>
             <li>2</li>
             <li>2</li>
             <li>2</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+           
+            <li>11111</li>
+     
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
             <li>11111</li>
             <li>11111</li>
             <li>11111</li>
@@ -17,22 +54,21 @@
 </template>
 
 <script>
+import BScroll from 'better-scroll';
+
 export default {
   name: 'Coming',
-  props:{
-      title:{
-        type: String,
-        default:'Hah '
-      }
+  mounted(){
+      new BScroll(this.$refs.come,{})
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    ul{
-        list-style: none;
-    }
+   .movelist{
+       height: 100%;
+   }
     li{
         height: 30px;
         background-color: aquamarine;

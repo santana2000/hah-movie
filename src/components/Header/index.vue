@@ -1,7 +1,9 @@
 <template>
-    <header id="header">
-        <h3>{{title}}</h3>
-    </header> 
+    <div class="top">
+      <header id="header">
+          <h3>{{title}}</h3>
+      </header> 
+    </div>
 </template>
 
 <script>
@@ -18,6 +20,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .top{
+    display: fixed;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 2.5rem;
+  }
   #header{
     text-align: center;
     color: white;
