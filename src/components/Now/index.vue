@@ -2,11 +2,11 @@
     <div class="movelist" ref="allmovie">
         <ul >
             <li v-for="item in movieList" :key="item.id" >
-                <img class="post" :src="item.img | getSrc('128.180')" alt="sss">
+                <img class="post" @click="toPage(item.id)" :src="item.img | getSrc('128.180')"  alt="sss">
 
                 <div class="main">
-                    <div class="name" v-if="item.nm.length < 6"> {{item.nm}} </div>
-                    <div class="name" v-else> {{item.nm | shortStar('...')}} </div>
+                    <div class="name" v-if="item.nm.length < 6" @click="toPage(item.id)"> {{item.nm}} </div>
+                    <div class="name" v-else @click="toPage(item.id)" > {{item.nm | shortStar('...')}} </div>
 
                     <img class="imax" v-if="item.version" src="@/assets/imax.png" alt="">
 
@@ -39,19 +39,28 @@ export default {
   },
 //   mounted(){
   activated(){
-      
       var cityId = this.$store.state.city.id;
       this.axios.get('/api/movieOnInfoList?cityId=' + cityId).then((res) => {
           this.movieList = res.data.data.movieList;
+          console.log(this.movieList);
           this.$nextTick(() => {
               var getdom = this.$refs.allmovie;
-              console.log(getdom)
-
-              new BScroll(getdom, {});
+            //   console.log(getdom)
+              new BScroll(getdom, {click:true});
+              //使用better-scroll后点击事件失效
           });
          
       })
+  },
+  methods: {
+      toPage: function(xid){
+        //   console.log(xid);
+          this.$router.push('/movie/detail/'+ xid);
+        //   this.$router.push.({ name: '/movie/detail/', params: { id: xid }})
+      },
+    
   }
+
 
      
   

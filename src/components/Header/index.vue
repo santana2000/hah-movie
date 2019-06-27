@@ -1,7 +1,9 @@
 <template>
     <div class="top">
-      <header id="header">
-          <h3>{{title}}</h3>
+      
+      <header>
+        <slot></slot>
+        <h3>{{title}}</h3>
       </header> 
     </div>
 </template>
@@ -26,21 +28,29 @@ export default {
     left: 0;
     margin-bottom: 2.5rem;
   }
-  #header{
+  header{
     text-align: center;
     color: white;
-    /* background-color:rgb(68, 146, 192); */
     background-color:rgb(229,72,71);
 
     position: relative;
     height: 2.5rem;
-    display: flex;
+
+    /* display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; */
+     
+    line-height: 2.5rem;
+    vertical-align: center;
+    width: 100%;
     
   }
+ 
   h3{
     font-weight: 300;
+    display: inline-block;
+    /* margin-left: -6rem; */
+
   }
   /* #icon{
     position: absolute;
