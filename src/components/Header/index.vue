@@ -1,6 +1,5 @@
 <template>
     <div class="top">
-      
       <header>
         <slot></slot>
         <h3>{{title}}</h3>

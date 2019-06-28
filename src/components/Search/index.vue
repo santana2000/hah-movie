@@ -27,11 +27,8 @@
                 <button class="pre" v-if="item.sc === 0">预售</button>
                 <button v-else>购票</button>
             </li>
-             
-
             </ul>
         </div>
-       
     </div>
 </template>
 
@@ -50,6 +47,8 @@ export default {
     //mes相当于函数，在watch中可以和v-model结合
     mes(val){
         var that = this
+
+        //函数防抖
         if(search){
             clearTimeout(search);
         }
@@ -81,7 +80,7 @@ export default {
     
 }
  
- .search_input{
+.search_input{
      border: 1px rgba(192, 192, 192, 0.897) solid;
      border-radius: 0.3rem;
      vertical-align: center;
@@ -91,36 +90,31 @@ export default {
      justify-content: center;
      width: 14rem;
      /* flex:1; */
-
-     
-
-
-
- }
- input :focus{
+}
+input :focus{
      border: none;
      outline: none;
- }
- .cancel{
+}
+.cancel{
      width: 3rem;
      align-self: center;
      font-size: 0.85rem;
      color: rgb(229,72,71);
      
- }
- .iconsearch{
+}
+.iconsearch{
      align-self: center;
      font-size: 1.2rem;
      color: rgb(117, 117, 117)
- }
- input{
+}
+input{
      display: block;
      width: 80%;
      height: 30px;;
      margin: 0 0;
      border: none
- }
- ul{
+}
+ul{
     padding: 0.3rem;
     overflow: hidden;
 }
