@@ -27,43 +27,35 @@
 </template>
 
 <script>
-
 // import BScroll from 'better-scroll';
-
 export default {
   name: 'Now',
   data(){
-      return{
-          movieList:[],
-      }
+    return{
+        movieList:[],
+    }
   },
-//   mounted(){
+  //mounted(){
   activated(){
-      var cityId = this.$store.state.city.id;
-      this.axios.get('/api/movieOnInfoList?cityId=' + cityId).then((res) => {
-          this.movieList = res.data.data.movieList;
-          console.log(this.movieList);
-        //   this.$nextTick(() => {
-        //       var getdom = this.$refs.allmovie;
-        //     //   console.log(getdom)
-        //       new BScroll(getdom, {click:true});
-        //       //使用better-scroll后点击事件失效
-        //   });
-         
-      })
+    var cityId = this.$store.state.city.id;
+    this.axios.get('/api/movieOnInfoList?cityId=' + cityId).then((res) => {
+        this.movieList = res.data.data.movieList;
+        console.log(this.movieList);
+
+    // 先加载数据之后才能使用better-scroll,所以需要nextTick
+    //   this.$nextTick(() => {       
+    //       var getdom = this.$refs.allmovie;
+    //       new BScroll(getdom, {click:true});
+    //   });
+        
+    })
   },
   methods: {
-      toPage: function(xid){
-        //   console.log(xid);
-          this.$router.push('/movie/detail/'+ xid);
-        //   this.$router.push.({ name: '/movie/detail/', params: { id: xid }})
-      },
-    
-  }
-
-
-     
-  
+    //跳转至详情页  
+    toPage: function(xid){
+        this.$router.push('/movie/detail/'+ xid);
+    }, 
+  }    
 }
 </script>
 
@@ -74,7 +66,6 @@ export default {
     height: 100%;  
     /* z-index:  -1; */
     /* flex: 1; */
-
 }
 ul{
     padding: 0.3rem;

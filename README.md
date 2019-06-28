@@ -44,8 +44,10 @@
 5. chrome有时候也会出问题
 6. 路由的过渡动效
 7. 不同事件浏览器识别效果不同xxxxxxxxxxxxx
-8. 使用better-scroll后点击事件失效
+8. 使用better-scroll时要注意父元素的css中高度的设置
 9. 组件的全局注册
+10. scaffold
+11. 使用过滤器或者三元运算时，一定要先判断要进行操作的数组或者字符串是否为空！！
   
 ## Project setup
 ```
