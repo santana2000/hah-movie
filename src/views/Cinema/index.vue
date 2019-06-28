@@ -2,18 +2,21 @@
     <div id="container">
         <Header title="查影院"/>
         <div id="content">
-            <div class="menu">
-                <div  tag="div" class="city">
+            <div class="wrap">
+                <div class="menu">
+                <div  tag="div" class="city item">
                     全城
                 </div>
-                <div  tag="div" class="nowplay">
+                <div  tag="div" class="nowplay item">
                     品牌
                 </div>
-                <div  tag="div" class="coming">
+                <div  tag="div" class="coming item">
                     特色
                 </div>
                
             </div>
+            </div>
+            
             <Clist />
 
              
@@ -42,10 +45,24 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        height: 50px;
-        /* background-color: rgb(109, 161, 190) */
+        height: 2.5rem;
+        background-color: rgb(255, 255, 255);
         border-bottom: 1px silver solid;
-        line-height: 50px;
+        line-height: 2.5rem;
+        opacity: 1;
+        z-index: 5;
+        
+    }
+    .wrap{
+        width: 100%;
+        position: fixed;
+        left: 0;
+        top: 2.5rem;   
+    }
+    .item{
+        font-size: 0.9rem;
+        color: rgb(92, 92, 92);
+        
     }
     .div-active{
         color:rgb(64, 158, 255);

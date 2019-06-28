@@ -1,34 +1,34 @@
 <template>
     <div class="movelist" ref="allmovie">
-        <ul >
-            <li v-for="item in movieList" :key="item.id" >
-                <img class="post" @click="toPage(item.id)" :src="item.img | getSrc('128.180')"  alt="sss">
+        <Scroll>
+            <ul >
+                <li v-for="item in movieList" :key="item.id" >
+                    <img class="post" @click="toPage(item.id)" :src="item.img | getSrc('128.180')"  alt="sss">
 
-                <div class="main">
-                    <div class="name" v-if="item.nm.length < 6" @click="toPage(item.id)"> {{item.nm}} </div>
-                    <div class="name" v-else @click="toPage(item.id)" > {{item.nm | shortStar('...')}} </div>
+                    <div class="main">
+                        <div class="name" v-if="item.nm.length < 6" @click="toPage(item.id)"> {{item.nm}} </div>
+                        <div class="name" v-else @click="toPage(item.id)" > {{item.nm | shortStar('...')}} </div>
 
-                    <img class="imax" v-if="item.version" src="@/assets/imax.png" alt="">
+                        <img class="imax" v-if="item.version" src="@/assets/imax.png" alt="">
 
-                    <div class="score" v-if="item.sc === 0"> 评分：暂无</div>
-                    <div class="score" v-else> 评分： <span>{{item.sc}}</span> </div>
+                        <div class="score" v-if="item.sc === 0"> 评分：暂无</div>
+                        <div class="score" v-else> 评分： <span>{{item.sc}}</span> </div>
 
-                    <div class="stars">主演：{{item.star | shortStar('...')}}</div>
-                    <div class="num">{{item.showInfo}}</div>
-                </div>
-              
-                <button class="pre" v-if="item.sc === 0">预售</button>
-                <button v-else>购票</button>
-            </li>
-             
-
-        </ul>
+                        <div class="stars">主演：{{item.star | shortStar('...')}}</div>
+                        <div class="num">{{item.showInfo}}</div>
+                    </div>
+                
+                    <button class="pre" v-if="item.sc === 0">预售</button>
+                    <button v-else>购票</button>
+                </li>         
+            </ul>
+        </Scroll>
     </div>
 </template>
 
 <script>
 
-import BScroll from 'better-scroll';
+// import BScroll from 'better-scroll';
 
 export default {
   name: 'Now',
@@ -43,12 +43,12 @@ export default {
       this.axios.get('/api/movieOnInfoList?cityId=' + cityId).then((res) => {
           this.movieList = res.data.data.movieList;
           console.log(this.movieList);
-          this.$nextTick(() => {
-              var getdom = this.$refs.allmovie;
-            //   console.log(getdom)
-              new BScroll(getdom, {click:true});
-              //使用better-scroll后点击事件失效
-          });
+        //   this.$nextTick(() => {
+        //       var getdom = this.$refs.allmovie;
+        //     //   console.log(getdom)
+        //       new BScroll(getdom, {click:true});
+        //       //使用better-scroll后点击事件失效
+        //   });
          
       })
   },
