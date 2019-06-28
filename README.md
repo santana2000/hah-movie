@@ -45,6 +45,7 @@
 6. 路由的过渡动效
 7. 不同事件浏览器识别效果不同xxxxxxxxxxxxx
 8. 使用better-scroll后点击事件失效
+9. 组件的全局注册
   
 ## Project setup
 ```

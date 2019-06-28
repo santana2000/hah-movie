@@ -1,65 +1,67 @@
 <template>
     <div class="movelist" ref="come">
-        <ul>
-            <li>2</li>
-            <li>2</li>
-            <li>2</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-           
-            <li>11111</li>
-     
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
-            <li>11111</li>
+        <Scroll>
+            <ul>
+                <li>2</li>
+                <li>2</li>
+                <li>2</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+            
+                <li>11111</li>
+        
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
+                <li>11111</li>
 
-        </ul>
+            </ul>
+        </Scroll>
     </div>
 </template>
 
 <script>
-import BScroll from 'better-scroll';
+ 
 
 export default {
   name: 'Coming',
   mounted(){
-      new BScroll(this.$refs.come,{})
+      
   }
 }
 </script>

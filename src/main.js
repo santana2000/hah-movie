@@ -4,12 +4,14 @@ import router from './routers'
 import store from './stores'
 
 import axios from 'axios'
+Vue.prototype.axios = axios;
+//可以用this.axios了，this代表这个vue组件
 
 import './assets/iconfont/iconfont.css'
  
+import Scroll from '@/components/Scroll'
+Vue.component('Scroll',Scroll);
 
-Vue.prototype.axios = axios;
-//可以用this.axios了，this代表这个vue组件
 
 Vue.filter('getSrc',(url, arg) => {
     return url.replace(/w\.h/, arg)

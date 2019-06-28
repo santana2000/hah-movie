@@ -5,15 +5,18 @@
         </Header>
         <div class="page">
             <div class="intro">
-                <img :src="detailmovie.img | getSrc('128.188')" alt="post">
-                <ul >
-                    <li class="name">{{ detailmovie.nm }}</li>
-                    <li class="en">{{detailmovie.enm}}</li>
-                    <li class="num">{{detailmovie.sc}}</li>
-                    <li class="type">{{detailmovie.cat}}</li>
-                    <li class="long">{{detailmovie.src}}</li>
-                    <li class="date">{{detailmovie.pubDesc}}</li>
-                </ul>
+                <img class="post" :src="detailmovie.img | getSrc('128.188')" alt="post">
+                <div class="wrapper">
+                    <ul>
+                        <li class="name">{{ detailmovie.nm }}</li>
+                        <li class="en">{{detailmovie.enm}}</li>
+                        <li class="num"><span>{{detailmovie.sc}}</span></li>
+                        <li class="type">{{detailmovie.cat}}</li>
+                        <li class="long">{{detailmovie.src}}</li>
+                        <li class="date">{{detailmovie.pubDesc}}</li>
+                    </ul>
+                </div>
+             
             </div>
             <div class="more">
 
@@ -26,7 +29,6 @@
 <script>
     import Header from '@/components/Header';
    
-
     export default {
         name: 'Detail',
         data(){
@@ -55,6 +57,10 @@
 </script>
 
 <style scoped>
+.top{
+    margin:  0 0 0 0;
+
+}
  .detail{
      position: absolute;
      top: 0;
@@ -64,15 +70,46 @@
      background-color: white;
      z-index:9999;
  }
- 
-  .iconarrowleft{
-    
+  .iconarrowleft{ 
     float:left;
     margin-left: 0.5rem;
     margin-right: -4.5rem;
     font-size: 1.1rem;
   }
-  
+  .intro{
+      margin: 0.5rem;
+      padding: 0.5rem;
+      height: 10rem;
+      position: relative;
+      /* background-image: url() */
+       
+
+  }
+  .post{
+      /* display: inline-block; */
+      height: 7rem;
+      margin-left: 1rem;
+
+  }
+  .wrapper{
+      /* display: inline-block; */
+      height: 100%;
+      font-size: 0.7rem;
+      position: absolute;
+      top:0.5rem ;
+      right: 1.5rem;
+    
+  }
+  .name{
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+  }
+  span{
+      font-size: 0.8rem;
+      color: rgb(210, 138, 30);
+      font-weight: 500
+  }
     
 </style>
 

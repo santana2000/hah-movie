@@ -1,47 +1,45 @@
 <template>
-  
     <!-- <button @click="clickRoute">查看当前路由</button> -->
-    <div class="city">
+    <div class="city" ref="city">
+        <Scroll ref="wrapper">
+            <!-- 所有城市 -->
+            <div class="all_city" ref="all_city">
+                <div>
+                    <div class="hot_list">
+                        <h4  >热门城市</h4>
+                        <ul class="hotname">
+                          <li class="item1" 
+                              v-for="item in hotList" 
+                              :key='item.id'
+                              @click='changeCity(item.nm,item.id)'> {{item.nm}} </li>
+                        </ul>
+                    </div>
+                
+                    <div class="city_list" ref="city_li">
+                        <div class="city_area" ref="city_area" v-for="item in cityList" :key="item.index">
+                          <h4  >{{item.index}}</h4>
+                          <ul class="cityname">
+                            <li class="item2" 
+                                v-for="itemx in item.list" 
+                                :key='itemx.id'
+                                @click='changeCity(itemx.nm,itemx.id)'> {{itemx.nm}} </li>
+                          </ul>
+                        </div>
+                    </div>               
+                </div>                
+            </div>
+        </Scroll>
 
-      <div class="all_city" ref="all_city">
-        <div class="hot_list">
-          <h4  >热门城市</h4>
-          <ul class="hotname">
-            <li class="item1" 
-                v-for="item in hotList" 
-                :key='item.id'
-                @click='changeCity(item.nm,item.id)'> {{item.nm}} </li>
-          </ul>
+        <!-- 右边字母索引 -->
+        <div class="city_index">
+            <div v-for="(item,index) in cityList" :key="item.index" @touchstart='indexToName(index)'>
+              {{item.index}}
+            </div>
         </div>
-
-        <div class="city_list" ref="city_li">
-          <div class="city_area" v-for="item in cityList" :key="item.index">
-            <h4  >{{item.index}}</h4>
-            <ul class="cityname">
-              <li class="item2" 
-                  v-for="itemx in item.list" 
-                  :key='itemx.id'
-                  @click='changeCity(itemx.nm,itemx.id)'> {{itemx.nm}} </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="city_index">
-        <div v-for="(item,index) in cityList" :key="item.index" @touchstart='indexToName(index)'>
-          {{item.index}}
-        </div>
-      </div>
-      
-
     </div>
-  
-
 </template>
 
 <script>
- 
- 
 export default {
   name: 'City',
   data(){
@@ -127,13 +125,21 @@ export default {
       return { cityList, hotList}
     },
     indexToName:function(index){
-      var h4 = this.$refs.city_li.getElementsByTagName('h4');
-      console.log(h4 );
-      console.log(h4[index].parentNode.offsetTop);
       
-      //******* scrollTop获取的值是滚动条产生的那个节点  *********************
-      this.$refs.city_li.parentNode.parentNode.scrollTop = h4[index].parentNode.offsetTop;
-      console.log(this.$refs.city_li.parentNode.parentNode.scrollTop);
+      var h4 = this.$refs.city_li.getElementsByTagName('h4');
+
+     
+      // console.log(h4[index].parentNode.offsetTop);
+      // console.log(this.$refs.all_city.scrollTop);
+      // *******  scrollTop获取的值是滚动条产生的那个节点  *********************
+
+      // 1.原生实现
+      // this.$refs.all_city.scrollTop = h4[index].parentNode.offsetTop;
+
+      // 2.better-scroll实现
+      this.$refs.wrapper.indexToCity(-h4[index].parentNode.offsetTop);
+      //注意 如果标签是是组件，refs获取到的就是这个组件
+     
     },
     changeCity:function(nm,id){
       this.$store.commit('CHANGE_CITY',{nm:nm,id:id});   //这里路径怎么写？？？
@@ -154,13 +160,26 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
  .city{
-   padding: 3px;
+   /* padding: 3px; */
+   background-color: rgba(235, 235, 235, 0.486);
+   z-index: 9999;
+   height: 100%;
+
+ }
+ h4{
+   padding: 1px 0 1px 2rem;
+   font-size: 0.9rem;
+   margin-top: 0.5rem;
+   margin-right: 1.5rem;
+   font-weight: 500;
+   width: 110%;
+   background-color: white;
  }
  .hot_list{
-   background-color: rgba(235, 235, 235, 0.486);
    /* border-bottom: 1px silver solid; */
-   margin-bottom: 10px;
-   margin-right: 25px;
+   margin-bottom: 0.4rem;
+   margin-right: 1rem;
+   font-size: 0.9rem;
 
 
  }
@@ -169,39 +188,48 @@ export default {
    margin-bottom: 3px;
  }
  .hotname{
-   list-style: none;
    display: flex;
    flex-direction: row;
    flex-wrap:wrap;
-   margin-left: 40px;
-   margin-bottom: 3px;
-   /* justify-content: space-around */
+   margin:0.8rem  0  0.2rem 2.5rem;
+ 
  }
  .item1{
-   margin-bottom: 5px;
-   width: 30%;
+   margin-bottom: 0.5rem;
+   width: 24%;
+   padding: 2px 0;
+   border: 0.5px solid silver;
+   background-color: white;
+   text-align: center;
+   margin-right: 0.8rem;
  }
 
  .item2{
    margin-left: 20px;
    margin-bottom: 5px;
  }
+ .cityname{
+   padding-top: 0.5rem;
+   font-size: 0.9rem;
+   margin-left: 1rem;
+ }
  .city_area{
-   border-bottom: 1px silver solid;
+   /* border-bottom: 1px silver solid; */
    margin-right: 25px;
    margin-bottom: 5px;
-   background-color: rgba(235, 235, 235, 0.486);
+    
  }
  .city_index{
+   text-align: center;
    position: fixed;
-   width: 15px;
-   height: 71%;
-   top:130px;
-   right: 5px;
+   width: 1rem;
+   height: 100%;
+   top:7.5rem;
+   right: 0.4rem;
    display: flex;
    flex-direction: column;
-   background-color: rgba(185, 163, 163, 0.486);
-   font-size: 14px;
+   /* background-color: white; */
+   font-size: 0.7rem;
 
  }
   /* #icon{
