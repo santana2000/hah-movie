@@ -17,8 +17,10 @@ Vue.filter('getSrc',(url, arg) => {
     return url.replace(/w\.h/, arg)
 });
 Vue.filter('shortStar',(star, arg) => {
-  return star.substring(0,6) + arg
+   var x = star.substring(0,6) + arg ;
+   return x;
 });
+
 
 
 Vue.config.productionTip = false;

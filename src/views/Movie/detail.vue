@@ -72,8 +72,10 @@
  }
   .iconarrowleft{ 
     float:left;
-    margin-left: 0.5rem;
-    margin-right: -4.5rem;
+    position: absolute;
+    top:0.7rem;
+    left: 0.5rem;;
+
     font-size: 1.1rem;
   }
   .intro{

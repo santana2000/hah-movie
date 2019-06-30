@@ -27,36 +27,45 @@
                 <button class="pre" v-if="item.sc === 0">预售</button>
                 <button v-else>购票</button>
             </li>
-             
-
             </ul>
         </div>
-       
     </div>
 </template>
 
 <script>
+var search;
 export default {
   name: 'Now',
   data(){
-      return{
-          mes:'',
-          searchList:[],
-      }
+    return{
+      mes:'',
+      searchList:[],
+    }
   },
-  
+  // keyup事件
   watch:{
-      mes(val){
-        this.axios.get('/api/searchList?cityId=10&kw='+ val).then((res) => {
-        var mymsg = res.data.msg;
-        var movies = res.data.data.movies;
+    //mes相当于函数，在watch中可以和v-model结合
+    mes(val){
+        var that = this
 
-        //先决判断还是很重要，如果没有返回的数据list，就会报错找不到list
-        if(mymsg && movies){
-                this.searchList = res.data.data.movies.list;
+        //函数防抖
+        if(search){
+            clearTimeout(search);
         }
-        // console.log(a)
-      })}
+        search = setTimeout(function(){
+            that.axios.get('/api/searchList?cityId=10&kw='+ val).then((res) => {
+            var mymsg = res.data.msg;
+            var movies = res.data.data.movies;
+
+            //先决判断还是很重要，如果没有返回的数据list，就会报错找不到list
+            if(mymsg && movies){
+                that.searchList = res.data.data.movies.list;
+            }})
+            console.log(that.searchList)
+            // console.log('x')
+        },1000)
+  
+    }
   },    
   
 }
@@ -71,7 +80,7 @@ export default {
     
 }
  
- .search_input{
+.search_input{
      border: 1px rgba(192, 192, 192, 0.897) solid;
      border-radius: 0.3rem;
      vertical-align: center;
@@ -81,90 +90,87 @@ export default {
      justify-content: center;
      width: 14rem;
      /* flex:1; */
-
-     
-
-
-
- }
- input :focus{
+}
+input :focus{
      border: none;
      outline: none;
- }
- .cancel{
+}
+.cancel{
      width: 3rem;
      align-self: center;
      font-size: 0.85rem;
      color: rgb(229,72,71);
      
- }
- .iconsearch{
+}
+.iconsearch{
      align-self: center;
      font-size: 1.2rem;
      color: rgb(117, 117, 117)
- }
- input{
+}
+input{
      display: block;
      width: 80%;
      height: 30px;;
      margin: 0 0;
      border: none
- }
- ul{
-     padding: 5px;
- }
- li{
-     border-bottom: 2px solid silver;
-     display: flex;
-     justify-content: space-between;
-     font-size: 16px;
-     padding: 10px;
+}
+ul{
+    padding: 0.3rem;
+    overflow: hidden;
+}
+li{
+    border-bottom: 0.8px solid rgba(211, 210, 210, 0.952);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    padding: 0.4rem;
 
- }
- .post{
-     /* padding: 10px; */
-     height: 120px;
-     margin-right: 10px;
- }
- .main{
-     flex: 1;
-     position: relative;
- }
- .name{
-     font-size: 18px;
-     font-weight: 600;
-     font-family: '微软雅黑';
-     margin: 0 0 15px 0;
+}
+.post{
+    /* padding: 10px; */
+    height: 5.5rem;
+    margin-right: 0.5rem;
+    margin-left: 0.3rem;
+}
+.main{
+    flex: 1;
+    position: relative;
+}
+.name{
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: '微软雅黑';
+    margin: 0 0 0.6rem 0;
 
- }
- .score, .stars, .num{
-     font-size: 15px;
-     margin-bottom: 5px;
- }
- span{
-     color: chocolate;
-     font-weight: 600;
+}
+.score, .stars, .num{
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+span{
+    color: chocolate;
+    font-weight: 600;
 
- }
- .imax{
-     position: absolute;
-     right: -20px;
-     top:5px;
-     width: 60px;
- }
- button{
-     color: white;
-     background-color: rgba(98, 167, 212, 0.89);
-     align-self: center;
-     width: 60px;
-     height: 35px;
-     padding: 0 5px;
-     border-radius: 5px;
-     border: none;
-     font-size: 16px;
+}
+.imax{
+    position: absolute;
+    right: -0.6rem;
+    top:0.25rem;
+    width: 2.7rem;
+}
+button{
+    color: white;
+    background-color: rgb(229,72,71);
+    align-self: center;
+    width: 2.6rem;
+    height: 1.5rem;
+    padding: 0 0.25rem;
+    border-radius: 0.25rem;
+    border: none;
+    font-size: 0.7rem;
 
- }
- .pre{
-     background-color: rgba(165, 42, 42, 0.795);
- }
+}
+.pre{
+    background-color: rgba(24, 169, 226, 0.986);
+}
 </style>

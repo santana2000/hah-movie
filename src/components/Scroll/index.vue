@@ -10,7 +10,6 @@
 import BScroll from 'better-scroll';
  
 export default {
-
     name:'Scroll',
     data(){
         return{
@@ -18,7 +17,6 @@ export default {
         }
     },
     mounted(){
-
         this.$nextTick(() => {
         var getdom = this.$refs.wrapper;
             // console.log(getdom)
@@ -27,8 +25,7 @@ export default {
                 tap:true,
                 probeType:1
             });
-            this.scroll = scroll;
-                
+            this.scroll = scroll;               
         });
     },
     methods:{
@@ -36,8 +33,6 @@ export default {
             this.scroll.scrollTo(0,y); 
         }
     }
-
-
 }
 </script>
 

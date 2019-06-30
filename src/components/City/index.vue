@@ -124,11 +124,9 @@ export default {
 
       return { cityList, hotList}
     },
+    //点击索引跳转至对应位置
     indexToName:function(index){
-      
       var h4 = this.$refs.city_li.getElementsByTagName('h4');
-
-     
       // console.log(h4[index].parentNode.offsetTop);
       // console.log(this.$refs.all_city.scrollTop);
       // *******  scrollTop获取的值是滚动条产生的那个节点  *********************
@@ -141,6 +139,7 @@ export default {
       //注意 如果标签是是组件，refs获取到的就是这个组件
      
     },
+    //点击更改当前城市
     changeCity:function(nm,id){
       this.$store.commit('CHANGE_CITY',{nm:nm,id:id});   //这里路径怎么写？？？
       this.$router.push('/movie/now');
@@ -159,80 +158,77 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
- .city{
-   /* padding: 3px; */
-   background-color: rgba(235, 235, 235, 0.486);
-   z-index: 9999;
-   height: 100%;
+  .city{
+    /* padding: 3px; */
+    background-color: rgba(235, 235, 235, 0.486);
+    z-index: 9999;
+    overflow: auto;
+    height: 100%;
 
- }
- h4{
-   padding: 1px 0 1px 2rem;
-   font-size: 0.9rem;
-   margin-top: 0.5rem;
-   margin-right: 1.5rem;
-   font-weight: 500;
-   width: 110%;
-   background-color: white;
- }
- .hot_list{
-   /* border-bottom: 1px silver solid; */
-   margin-bottom: 0.4rem;
-   margin-right: 1rem;
-   font-size: 0.9rem;
+  }
+  h4{
+    padding: 1px 0 1px 2rem;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-right: 1.5rem;
+    font-weight: 500;
+    width: 110%;
+    background-color: white;
+  }
+  .hot_list{
+    /* border-bottom: 1px silver solid; */
+    margin-bottom: 0.4rem;
+    margin-right: 1rem;
+    font-size: 0.9rem;
+  }
+  .hot{
+    margin-left: 20px;
+    margin-bottom: 3px;
+  }
+  .hotname{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    margin:0.8rem  0  0.2rem 2.5rem;
 
+  }
+  .item1{
+    margin-bottom: 0.5rem;
+    width: 24%;
+    padding: 2px 0;
+    border: 0.5px solid silver;
+    background-color: white;
+    text-align: center;
+    margin-right: 0.8rem;
+  }
 
- }
- .hot{
-   margin-left: 20px;
-   margin-bottom: 3px;
- }
- .hotname{
-   display: flex;
-   flex-direction: row;
-   flex-wrap:wrap;
-   margin:0.8rem  0  0.2rem 2.5rem;
- 
- }
- .item1{
-   margin-bottom: 0.5rem;
-   width: 24%;
-   padding: 2px 0;
-   border: 0.5px solid silver;
-   background-color: white;
-   text-align: center;
-   margin-right: 0.8rem;
- }
-
- .item2{
-   margin-left: 20px;
-   margin-bottom: 5px;
- }
- .cityname{
-   padding-top: 0.5rem;
-   font-size: 0.9rem;
-   margin-left: 1rem;
- }
- .city_area{
-   /* border-bottom: 1px silver solid; */
-   margin-right: 25px;
-   margin-bottom: 5px;
+  .item2{
+    margin-left: 20px;
+    margin-bottom: 5px;
+  }
+  .cityname{
+    padding-top: 0.5rem;
+    font-size: 0.9rem;
+    margin-left: 1rem;
+  }
+  .city_area{
+    /* border-bottom: 1px silver solid; */
+    margin-right: 25px;
+    margin-bottom: 5px;
     
- }
- .city_index{
-   text-align: center;
-   position: fixed;
-   width: 1rem;
-   height: 100%;
-   top:7.5rem;
-   right: 0.4rem;
-   display: flex;
-   flex-direction: column;
-   /* background-color: white; */
-   font-size: 0.7rem;
+  }
+  .city_index{
+    text-align: center;
+    position: fixed;
+    width: 1.5rem;
+    height: 100%;
+    line-height: 1rem;
+    top:7.5rem;
+    right: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    /* background-color: white; */
+    font-size: 0.7rem;
+  }
 
- }
-  /* #icon{
-    position: absolute;
-  } */
 </style>

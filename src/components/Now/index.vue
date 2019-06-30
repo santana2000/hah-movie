@@ -1,5 +1,5 @@
 <template>
-    <div class="movelist" ref="allmovie">
+    <div class="movielist" ref="allmovie">
         <Scroll>
             <ul >
                 <li v-for="item in movieList" :key="item.id" >
@@ -27,58 +27,50 @@
 </template>
 
 <script>
-
 // import BScroll from 'better-scroll';
-
 export default {
   name: 'Now',
   data(){
-      return{
-          movieList:[],
-      }
+    return{
+        movieList:[],
+    }
   },
-//   mounted(){
+  //mounted(){
   activated(){
-      var cityId = this.$store.state.city.id;
-      this.axios.get('/api/movieOnInfoList?cityId=' + cityId).then((res) => {
-          this.movieList = res.data.data.movieList;
-          console.log(this.movieList);
-        //   this.$nextTick(() => {
-        //       var getdom = this.$refs.allmovie;
-        //     //   console.log(getdom)
-        //       new BScroll(getdom, {click:true});
-        //       //使用better-scroll后点击事件失效
-        //   });
-         
-      })
+    var cityId = this.$store.state.city.id;
+    this.axios.get('/api/movieOnInfoList?cityId=' + cityId).then((res) => {
+        this.movieList = res.data.data.movieList;
+        console.log(this.movieList);
+
+    // 先加载数据之后才能使用better-scroll,所以需要nextTick
+    //   this.$nextTick(() => {       
+    //       var getdom = this.$refs.allmovie;
+    //       new BScroll(getdom, {click:true});
+    //   });
+        
+    })
   },
   methods: {
-      toPage: function(xid){
-        //   console.log(xid);
-          this.$router.push('/movie/detail/'+ xid);
-        //   this.$router.push.({ name: '/movie/detail/', params: { id: xid }})
-      },
-    
-  }
-
-
-     
-  
+    //跳转至详情页  
+    toPage: function(xid){
+        this.$router.push('/movie/detail/'+ xid);
+    }, 
+  }    
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.movelist{
+.movielist{
     /* 高度100%作为better-scroll的外层父容器 */
     height: 100%;  
     /* z-index:  -1; */
     /* flex: 1; */
-
+    overflow: auto; /**********menu不随列表滑动的关键点**************/
 }
 ul{
     padding: 0.3rem;
-    overflow: hidden;
+    /* overflow: hidden; ******************************************/
 }
 li{
     border-bottom: 0.8px solid rgba(211, 210, 210, 0.952);

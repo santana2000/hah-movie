@@ -1,11 +1,10 @@
 <template>
-    <div class="top">
-      
+    <!-- <div class="top"> -->
       <header>
         <slot></slot>
         <h3>{{title}}</h3>
       </header> 
-    </div>
+    <!-- </div> -->
 </template>
 
 <script>
@@ -22,37 +21,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .top{
+  /* .top{
     display: fixed;
     bottom: 0;
     left: 0;
     margin-bottom: 2.5rem;
-  }
+  } */
   header{
-    text-align: center;
     color: white;
     background-color:rgb(229,72,71);
-
+    /* flex容器里的子元素是可以fixed的 */
     position: relative;
-    height: 2.5rem;
-
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
-     
-    line-height: 2.5rem;
-    vertical-align: center;
+    /* top: 0;
+    left: 0; */
     width: 100%;
-    
+    height: 2.5rem;  
+    /* vertical-align: center; */
+    z-index: 9999;
   }
  
   h3{
     font-weight: 300;
-    display: inline-block;
+    line-height: 2.5rem;
+    text-align: center;
+    /* display: inline-block; */
     /* margin-left: -6rem; */
-
   }
-  /* #icon{
-    position: absolute;
-  } */
+
 </style>
