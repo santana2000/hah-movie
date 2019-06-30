@@ -1,5 +1,5 @@
 <template>
-    <footer id="footer">   
+    <footer>   
         <ul class='tab'>
             <router-link to="/movie" tag="li">
                 <i class="iconfont icondianying "></i>
@@ -36,9 +36,10 @@ footer{
   background-color:white ;
   font-weight: 100;
   border-top: 1px solid rgba(212, 218, 219, 0.884) ;
-  display: fixed;
+  /* display: fixed;
   bottom: 0;
-  left: 0;
+  left: 0; */
+  z-index: 9999;
 }
 .tab{
   height: 100%;
@@ -58,20 +59,13 @@ li{
   font-size: 0.6rem;
 
 }
-.item{
-  /* line-height: 60px; */
-  
-}
 li.router-link-active{
   color: rgb(229,72,71);
   
 }
-.item.router-link-active{
+/* .item.router-link-active{
   color: rgb(229,72,71);
-}
-ul{
-  list-style: none;
-}
+} */
 .iconfont{
   font-size: 1.1rem;
 }

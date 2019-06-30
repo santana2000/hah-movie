@@ -4,7 +4,7 @@ img{ display: block;}
 html,body{ height:100%;}
 /* .clearfix:after{ content:""; display: block; clear:both;} */
 
-#container{ 
+#movie_page{ 
     height: 100%; 
     display: flex; 
     flex-direction:column;  

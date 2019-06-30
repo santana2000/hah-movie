@@ -162,6 +162,7 @@ export default {
     /* padding: 3px; */
     background-color: rgba(235, 235, 235, 0.486);
     z-index: 9999;
+    overflow: auto;
     height: 100%;
 
   }
@@ -219,8 +220,9 @@ export default {
   .city_index{
     text-align: center;
     position: fixed;
-    width: 1rem;
+    width: 1.5rem;
     height: 100%;
+    line-height: 1rem;
     top:7.5rem;
     right: 0.4rem;
     display: flex;

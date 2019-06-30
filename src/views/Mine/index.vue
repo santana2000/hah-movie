@@ -1,7 +1,9 @@
 <template>
-    <div id="container">
+    <div id="movie_page">
         <Header title="身份证"/>
-        <Login />
+        <div id="content">
+            <Login />
+        </div>
         <TabBar />
     </div>
 </template>
@@ -20,6 +22,8 @@
     }
 </script>
 <style scoped>
-   
+/* .page{
+    height: 100%;
+} */
 </style>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="movelist" ref="allmovie">
+    <div class="movielist" ref="allmovie">
         <Scroll>
             <ul >
                 <li v-for="item in movieList" :key="item.id" >
@@ -61,15 +61,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.movelist{
+.movielist{
     /* 高度100%作为better-scroll的外层父容器 */
     height: 100%;  
     /* z-index:  -1; */
     /* flex: 1; */
+    overflow: auto; /**********menu不随列表滑动的关键点**************/
 }
 ul{
     padding: 0.3rem;
-    overflow: hidden;
+    /* overflow: hidden; ******************************************/
 }
 li{
     border-bottom: 0.8px solid rgba(211, 210, 210, 0.952);

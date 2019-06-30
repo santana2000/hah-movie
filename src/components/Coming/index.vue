@@ -1,5 +1,5 @@
 <template>
-    <div class="movelist" ref="come">
+    <div class="movielist" ref="come">
         <Scroll>
             <ul >
                 <li v-for="item in movieList" :key="item.id" >
@@ -56,12 +56,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-.movelist{
+.movielist{
     height: 100%;
+    z-index: -1;
+    overflow: auto;
+   
 }
 ul{
     padding: 0.3rem;
-    overflow: hidden;
 }
 li{
     border-bottom: 0.8px solid rgba(211, 210, 210, 0.952);
