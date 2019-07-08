@@ -14,11 +14,15 @@ Vue.component('Scroll',Scroll);
 
 
 Vue.filter('getSrc',(url, arg) => {
+  if(url !== undefined){
     return url.replace(/w\.h/, arg)
+  }
 });
 Vue.filter('shortStar',(star, arg) => {
-   var x = star.substring(0,6) + arg ;
-   return x;
+  if(star !== undefined &&  star.length>6){
+    var x = star.substring(0,6) + arg ;
+    return x;
+  }    
 });
 
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="movielist" ref="come">
+    <!-- <div class="movielist" ref="come"> -->
         <Scroll>
             <ul >
                 <li v-for="item in movieList" :key="item.id" >
@@ -23,7 +23,7 @@
                 </li>         
             </ul>
         </Scroll>
-    </div>
+    <!-- </div> -->
 </template>
 
 <script>
